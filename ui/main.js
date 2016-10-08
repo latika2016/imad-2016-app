@@ -30,8 +30,8 @@ var submit = document.getElementById('submit_btn');
 submit.onclick = function(){
     var names = ['name1', 'name2', 'name3', 'name4'];
     var list = '';
-    var list_len = list.length;
-    for(var i = 0; i < list_len; i++){
+    var names_len = names.length;
+    for(var i = 0; i < names_len; i++){
         list = '<li>'+names[i]+'</li>';
     }
     var ul = document.getElementById('namelist');
