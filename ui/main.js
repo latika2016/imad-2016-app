@@ -25,3 +25,16 @@ button.onclick = function(){
     request.send(null);
 };
 
+// Adding names dynamically
+var submit = document.getElementById('submit_btn');
+submit.onclick = function(){
+    var names = ['name1', 'name2', 'name3', 'name4'];
+    var list = '';
+    var list_len = list.length;
+    for(var i = 0; i < list_len; i++){
+        list = '<li>'+names[i]+'</li>';
+    }
+    var ul = document.getElementById('namelist');
+    ul.innerHTML = list;
+};
+
