@@ -1,8 +1,8 @@
 // Counter Code
 
-var button = document.getElementById('counter');
+var submit = document.getElementById('submit_btn');
 
-button.onclick = function(){
+submit.onclick = function(){
     // Create a request
     var request = new XMLHttpRequest();
     
@@ -12,29 +12,38 @@ button.onclick = function(){
             // if request successful
             if(request.status === 200){
                 // Render the response in the correct span
-                var counter = request.responseText;
-                var span = document.getElementById('count');
-                span.innerHTML = counter.toString();
+                var names = request.responseText;
+                names = JSON.parse(names);
+                var list = '';
+                var names_len = names.length;
+                for(var i = 0; i < names_len; i++){
+                    list += '<li>'+names[i]+'</li>';
+                }
+                var ul = document.getElementById('namelist');
+                ul.innerHTML = list;
             }
         }
         // Not yet done
     };
     
     // Make a request
-    request.open('GET','http://latika2016.imad.hasura-app.io/counter',true);
+    var name = document.getElementById('name').value; 
+    request.open('GET','http://latika2016.imad.hasura-app.io/submit-name?name=' + name,true);
     request.send(null);
 };
 
 // Adding names dynamically
-var submit = document.getElementById('submit_btn');
-submit.onclick = function(){
-    var names = ['name1', 'name2', 'name3', 'name4'];
+//var submit = document.getElementById('submit_btn');
+//var name = document.getElementById('name');
+/*submit.onclick = function(){
+    var names = request.responseText;
+    names = JSON.parse(names);
     var list = '';
     var names_len = names.length;
     for(var i = 0; i < names_len; i++){
-        list = '<li>'+names[i]+'</li>';
+        list += '<li>'+names[i]+'</li>';
     }
     var ul = document.getElementById('namelist');
     ul.innerHTML = list;
 };
-
+*/
